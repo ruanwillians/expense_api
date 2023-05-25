@@ -1,16 +1,11 @@
-from flask import jsonify
 from database import create_app, db
-from model import expense
+from src.controller.expense import expense_bp
+
 
 app = create_app()
-
-
-@app.route('/api', methods=['GET'])
-def api():
-    return jsonify("helloWord")
-
+app.register_blueprint(expense_bp)
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run()
+    app.run(debug=True)
