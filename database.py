@@ -1,12 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from dotenv import load_dotenv
+import os
 
 
 # conf de migração
 migrate = Migrate()
 
 db = SQLAlchemy()
+load_dotenv()
 
 
 def create_app():
@@ -14,7 +17,7 @@ def create_app():
     app = Flask(__name__)
 
     # Define a URL do banco de dados com base nas variáveis de ambiente
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://postgres:BqKoZ2JgHBYtwXMVQyJn@containers-us-west-206.railway.app:5771/railway"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{os.environ['POSTGRES_USER']}:{os.environ['POSTGRES_PASSWORD']}@{os.environ['POSTGRES_HOST']}:{os.environ['POSTGRES_PORT']}/{os.environ['POSTGRES_DB']}"
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

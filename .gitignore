@@ -1,0 +1,17 @@
+# Arquivos e diretórios específicos do Python
+__pycache__/
+*.pyc
+
+# Diretório virtual environment (venv)
+venv/
+
+# Arquivos de log
+*.log
+
+# Arquivos de banco de dados
+*.db
+
+# Arquivos de configuração sensíveis
+config.py
+
+# Outros arquivos ou diretórios personalizados que você deseja ignorar
