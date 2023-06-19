@@ -31,3 +31,8 @@ class Users(db.Model):
             'email': self.email,
             'balance': self.balance
         }
+
+    def json_token(token):
+        return {
+            'token': token
+        }
